@@ -6,6 +6,7 @@
 #include <QtWidgets/QMessageBox>
 #include <QtCore/QTimer>
 
+#include "../dock/DockManager.h"
 #include "editor/resources/resource.h"
 #include "../surface/NodeSurfacePanel.h"
 #include "../modulebrowser/ModuleBrowserPanel.h"
@@ -27,8 +28,8 @@ MainWindow::MainWindow(MaximRuntime::Runtime *runtime, std::unique_ptr<AxiomMode
     resize(1440, 810);
 
     setUnifiedTitleAndToolBarOnMac(true);
-    setDockNestingEnabled(true);
-    setTabPosition(Qt::AllDockWidgetAreas, QTabWidget::North);
+
+    dockManager = new ads::CDockManager(this);
 
     // build
     auto fileMenu = menuBar()->addMenu(tr("&File"));
@@ -94,8 +95,17 @@ void MainWindow::showSurface(NodeSurfacePanel *fromPanel, AxiomModel::NodeSurfac
 
     auto newDock = std::make_unique<NodeSurfacePanel>(this, surface);
     auto newDockPtr = newDock.get();
-    newDock->setAllowedAreas(Qt::AllDockWidgetAreas);
     if (!fromPanel) {
+        dockManager->addDockWidget(ads::LeftDockWidgetArea, newDockPtr);
+    } else {
+        dockManager->addDockWidget(ads::RightDockWidgetArea, newDockPtr, fromPanel->dockAreaWidget());
+
+        QTimer::singleShot(0, newDockPtr, [newDockPtr]() {
+            newDockPtr->raise();
+        });
+    }
+
+    /*if (!fromPanel) {
         addDockWidget(Qt::LeftDockWidgetArea, newDockPtr);
     } else if (split) {
         splitDockWidget(fromPanel, newDockPtr, Qt::Horizontal);
@@ -107,7 +117,7 @@ void MainWindow::showSurface(NodeSurfacePanel *fromPanel, AxiomModel::NodeSurfac
         QTimer::singleShot(0, newDockPtr, [newDockPtr]() {
             newDockPtr->raise();
         });
-    }
+    }*/
 
     connect(newDockPtr, &NodeSurfacePanel::closed,
             this, [this, surface]() { removeSurface(surface); });
@@ -151,7 +161,7 @@ void MainWindow::setProject(std::unique_ptr<AxiomModel::Project> project) {
 
     _historyPanel = std::make_unique<HistoryPanel>(&_project->mainRoot().history(), this);
     _historyPanel->widget()->setBaseSize(300, _historyPanel->widget()->baseSize().height());
-    addDockWidget(Qt::RightDockWidgetArea, _historyPanel.get());
+    dockManager->addDockWidget(ads::RightDockWidgetArea, _historyPanel.get());
 }
 
 void MainWindow::removeSurface(AxiomModel::NodeSurface *surface) {

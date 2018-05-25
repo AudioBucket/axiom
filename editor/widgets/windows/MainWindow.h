@@ -12,6 +12,10 @@ namespace AxiomModel {
     class NodeSurface;
 }
 
+namespace ads{
+    class CDockManager;
+}
+
 namespace AxiomGui {
 
     class NodeSurfacePanel;
@@ -46,6 +50,7 @@ namespace AxiomGui {
 
     private:
 
+        ads::CDockManager *dockManager;
         MaximRuntime::Runtime *runtime;
         std::unique_ptr<AxiomModel::Project> _project;
         std::unordered_map<AxiomModel::NodeSurface *, std::unique_ptr<NodeSurfacePanel>> _openPanels;

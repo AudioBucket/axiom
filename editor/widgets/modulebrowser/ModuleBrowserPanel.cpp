@@ -10,7 +10,7 @@
 using namespace AxiomGui;
 
 ModuleBrowserPanel::ModuleBrowserPanel(MainWindow *window, AxiomModel::Library *library, QWidget *parent)
-    : DockPanel("Modules", parent), library(library) {
+    : ads::CDockWidget("Modules", parent), library(library) {
     setStyleSheet(AxiomUtil::loadStylesheet(":/ModuleBrowserPanel.qss"));
 
     auto mainLayout = new QGridLayout(this);

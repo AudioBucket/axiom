@@ -3,7 +3,7 @@
 #include <QtWidgets/QListWidget>
 
 #include "common/Hookable.h"
-#include "../dock/DockPanel.h"
+#include "../dock/DockWidget.h"
 
 namespace AxiomModel {
     class Action;
@@ -13,7 +13,7 @@ namespace AxiomModel {
 
 namespace AxiomGui {
 
-    class HistoryPanel : public DockPanel, public AxiomCommon::Hookable {
+    class HistoryPanel : public ads::CDockWidget, public AxiomCommon::Hookable {
     Q_OBJECT
 
     public:

@@ -2,7 +2,7 @@
 
 #include <map>
 
-#include "../dock/DockPanel.h"
+#include "../dock/DockWidget.h"
 
 class QTabBar;
 
@@ -14,7 +14,7 @@ namespace AxiomGui {
 
     class MainWindow;
 
-    class ModuleBrowserPanel : public DockPanel {
+    class ModuleBrowserPanel : public ads::CDockWidget {
     Q_OBJECT
 
     public:

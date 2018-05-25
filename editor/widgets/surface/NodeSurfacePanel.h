@@ -2,7 +2,7 @@
 
 #include <QtWidgets/QGraphicsScene>
 
-#include "../dock/DockPanel.h"
+#include "../dock/DockWidget.h"
 #include "common/Hookable.h"
 
 namespace AxiomModel {
@@ -13,7 +13,7 @@ namespace AxiomGui {
 
     class MainWindow;
 
-    class NodeSurfacePanel : public DockPanel, public AxiomCommon::Hookable {
+    class NodeSurfacePanel : public ads::CDockWidget, public AxiomCommon::Hookable {
     Q_OBJECT
 
     public:
