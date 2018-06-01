@@ -8,7 +8,7 @@ language: cpp
 #  - LLVM 6
 #  - PortAudio
 install:
- - brew install gcc7 && CC=gcc-7 && CXX=g++7
+ - brew install gcc@7 && CC=gcc-7 && CXX=g++7
  - mkdir build
  - cd build
  - curl https://download.steinberg.net/sdk_downloads/vstsdk369_01_03_2018_build_132.zip > vstsdk.zip
