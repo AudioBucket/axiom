@@ -1180,6 +1180,8 @@ using namespace optional_lite;
 
 namespace std {
 
+    using nonstd::optional;
+
 template< class T >
 struct hash< nonstd::optional<T> >
 {
