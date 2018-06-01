@@ -21,7 +21,7 @@ install:
  - brew install portaudio
 
 before_script:
-  - cmake ../ -DAXIOM_STATIC_LINK=ON -DVST2_SDK_ROOT=VST_SDK/VST2_SDK -DCMAKE_PREFIX_PATH="/usr/local/opt/qt;/usr/local/opt/llvm"
+  - cmake ../ -DAXIOM_STATIC_LINK=ON -DVST2_SDK_ROOT="build/VST_SDK/VST2_SDK" -DCMAKE_PREFIX_PATH="/usr/local/opt/qt;/usr/local/opt/llvm"
 
 script:
   - cmake --build ./
