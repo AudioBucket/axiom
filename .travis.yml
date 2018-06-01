@@ -16,9 +16,6 @@ install:
  - brew install llvm
  - brew install portaudio
 
-before_script:
-  - mkdir build
-  - cd build
-  - cmake .. -DAXIOM_STATIC_LINK=ON -DVST2_SDK_ROOT=VST_SDK/VST2_SDK
-
-script: cmake --build ./
+script:
+  - cmake ../ -DAXIOM_STATIC_LINK=ON -DVST2_SDK_ROOT=VST_SDK/VST2_SDK
+  - cmake --build ./
