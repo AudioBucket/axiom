@@ -14,7 +14,7 @@ cache:
 #  - PortAudio
 install:
  - brew cask uninstall oclint
- - brew install gcc@7 && C=gcc-7 && CXX=g++-7
+ - brew install gcc@7 && CC=gcc-7 && CXX=g++-7
  - $CC --version
  - $CXX --version
  - mkdir build
