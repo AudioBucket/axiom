@@ -1,6 +1,10 @@
 os: osx
 language: cpp
 
+cache:
+  directories:
+    - $HOME/Library/Caches/Homebrew
+
 # dependencies required:
 #  - GCC 7
 #  - VST 2 SDK
