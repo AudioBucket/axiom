@@ -13,7 +13,10 @@ cache:
 #  - LLVM 6
 #  - PortAudio
 install:
- - brew install gcc@7 --overwrite && C=gcc && CXX=g++
+ - brew cask uninstall oclint
+ - brew install gcc@7 && C=gcc-7 && CXX=g++-7
+ - $CC --version
+ - $CXX --version
  - mkdir build
  - cd build
  - curl https://download.steinberg.net/sdk_downloads/vstsdk369_01_03_2018_build_132.zip > vstsdk.zip
