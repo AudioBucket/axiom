@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include <optional>
 #include <functional>
 #include <set>
 #include <utility>
@@ -9,6 +8,7 @@
 #include <tuple>
 #include <memory>
 
+#include "common/Optional.h"
 #include "SharedHookable.h"
 
 namespace AxiomCommon {

@@ -1,8 +1,9 @@
 #pragma once
 
 #include <functional>
-#include <optional>
 #include <memory>
+
+#include "common/Optional.h"
 
 namespace AxiomModel {
 
